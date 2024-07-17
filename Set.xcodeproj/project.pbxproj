@@ -11,6 +11,8 @@
 		05A0335E2C4858BD00DA7B16 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0335D2C4858BD00DA7B16 /* ContentView.swift */; };
 		05A033602C4858BE00DA7B16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05A0335F2C4858BE00DA7B16 /* Assets.xcassets */; };
 		05A033632C4858BE00DA7B16 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05A033622C4858BE00DA7B16 /* Preview Assets.xcassets */; };
+		05A0336B2C4858F700DA7B16 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0336A2C4858F700DA7B16 /* Card.swift */; };
+		05A0336D2C48593D00DA7B16 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0336C2C48593D00DA7B16 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		05A0335D2C4858BD00DA7B16 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		05A0335F2C4858BE00DA7B16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05A033622C4858BE00DA7B16 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		05A0336A2C4858F700DA7B16 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		05A0336C2C48593D00DA7B16 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,7 @@
 		05A0335A2C4858BD00DA7B16 /* Set */ = {
 			isa = PBXGroup;
 			children = (
+				05A033692C4858DE00DA7B16 /* ModelFiles */,
 				05A0335B2C4858BD00DA7B16 /* SetApp.swift */,
 				05A0335D2C4858BD00DA7B16 /* ContentView.swift */,
 				05A0335F2C4858BE00DA7B16 /* Assets.xcassets */,
@@ -65,6 +70,15 @@
 				05A033622C4858BE00DA7B16 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		05A033692C4858DE00DA7B16 /* ModelFiles */ = {
+			isa = PBXGroup;
+			children = (
+				05A0336A2C4858F700DA7B16 /* Card.swift */,
+				05A0336C2C48593D00DA7B16 /* Game.swift */,
+			);
+			path = ModelFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +152,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				05A0335E2C4858BD00DA7B16 /* ContentView.swift in Sources */,
+				05A0336B2C4858F700DA7B16 /* Card.swift in Sources */,
 				05A0335C2C4858BD00DA7B16 /* SetApp.swift in Sources */,
+				05A0336D2C48593D00DA7B16 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
