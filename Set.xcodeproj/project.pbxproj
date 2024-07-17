@@ -55,9 +55,10 @@
 		05A0335A2C4858BD00DA7B16 /* Set */ = {
 			isa = PBXGroup;
 			children = (
+				05A0336F2C4859D900DA7B16 /* View */,
+				05A0336E2C4859C200DA7B16 /* ModelView */,
 				05A033692C4858DE00DA7B16 /* ModelFiles */,
 				05A0335B2C4858BD00DA7B16 /* SetApp.swift */,
-				05A0335D2C4858BD00DA7B16 /* ContentView.swift */,
 				05A0335F2C4858BE00DA7B16 /* Assets.xcassets */,
 				05A033612C4858BE00DA7B16 /* Preview Content */,
 			);
@@ -79,6 +80,21 @@
 				05A0336C2C48593D00DA7B16 /* Game.swift */,
 			);
 			path = ModelFiles;
+			sourceTree = "<group>";
+		};
+		05A0336E2C4859C200DA7B16 /* ModelView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ModelView;
+			sourceTree = "<group>";
+		};
+		05A0336F2C4859D900DA7B16 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				05A0335D2C4858BD00DA7B16 /* ContentView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
