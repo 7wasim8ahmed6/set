@@ -11,8 +11,8 @@ struct StripedPattern: View {
     var body: some View {
         GeometryReader { geometry in
             Path { path in
-                let stripeWidth: CGFloat = 2
-                for x in stride(from: 0, to: geometry.size.width, by: stripeWidth * 8) {
+                let stripeWidth: CGFloat = 1
+                for x in stride(from: 0, to: geometry.size.width, by: stripeWidth * 4) {
                     path.addRect(CGRect(x: x, y: 0, width: stripeWidth, height: geometry.size.height))
                 }
             }

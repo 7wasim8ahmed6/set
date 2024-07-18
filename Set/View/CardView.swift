@@ -79,3 +79,18 @@ struct SquiggleView: View {
         }
     }
 }
+
+struct CardView: View {
+    let content: AnyView
+    
+    var body: some View {
+        VStack {
+            content
+        }
+        .padding()
+        .background(Color.white)
+        .cornerRadius(10)
+        .shadow(radius: 5)
+        .padding(1)
+    }
+}
