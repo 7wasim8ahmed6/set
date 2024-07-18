@@ -57,3 +57,25 @@ struct DiamondView: View {
     }
 }
 
+struct SquiggleView: View {
+    let number: Int
+    let fillingType: FillingType
+    let color: Color
+
+    var body: some View {
+        ZStack {
+            Squiggle(number: number)
+                .stroke(color, lineWidth: 2)
+            if fillingType == .solid
+            {
+                Squiggle(number: number).fill(color)
+            }
+            else if fillingType == .striped
+            {
+                Squiggle(number: number)
+                    .fill(Color.clear)
+                    .overlay(StripedPattern().clipShape(Squiggle(number: number)).foregroundColor(color))
+            }
+        }
+    }
+}

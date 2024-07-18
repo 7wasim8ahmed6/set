@@ -12,8 +12,10 @@ struct SetGameView: View {
     var body: some View {
         VStack{
             
-            OvalView(number: 1, fillingType: .open, color: .red)
-            DiamondView(number: 1, fillingType: .open, color: .red)
+            OvalView(number: 1, fillingType: .solid, color: .red)
+            DiamondView(number: 1, fillingType: .open, color: .yellow)
+            SquiggleView(number: 1, fillingType: .striped, color: .red)
+            
         }.padding()
         
         
