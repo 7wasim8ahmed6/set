@@ -11,7 +11,9 @@ struct SetGameView: View {
     let theGameView:SetGame
     var body: some View {
         VStack{
-            OvalView(number: 2, fillingType: .striped, color: .red)
+            
+            OvalView(number: 1, fillingType: .open, color: .red)
+            DiamondView(number: 1, fillingType: .open, color: .red)
         }.padding()
         
         

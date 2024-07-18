@@ -33,3 +33,27 @@ struct OvalView: View {
         }        
     }
 }
+
+struct DiamondView: View {
+    let number: Int
+    let fillingType: FillingType
+    let color: Color
+
+    var body: some View {
+        ZStack {
+            Diamond(number: number)
+                .stroke(color, lineWidth: 2)
+            if fillingType == .solid
+            {
+                Diamond(number: number).fill(color)
+            }
+            else if fillingType == .striped
+            {
+                Diamond(number: number)
+                    .fill(Color.clear)
+                    .overlay(StripedPattern().clipShape(Diamond(number: number)).foregroundColor(color))
+            }
+        }
+    }
+}
+
