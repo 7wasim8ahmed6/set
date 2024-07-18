@@ -8,9 +8,9 @@
 import Foundation
 struct Game{
     private var mCards:[Card] = []
-    private var mDrawCards:[Card] = []
+    private(set) var mDrawCards:[Card] = []
     private var mIsFirstDraw = true
-    private var mChoosenIndices:[Int] = []
+    private(set) var mChoosenIndices:[Int] = []
     private var mMatched:[Card] = []
     
     init() {

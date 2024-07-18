@@ -10,15 +10,40 @@ import SwiftUI
 struct SetGameView: View {
     let theGameView:SetGame
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        VStack{
+            OvalView(number: 2, fillingType: .striped, color: .red)
+        }.padding()
+        
+        
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 struct ContentView_Previews: PreviewProvider {

@@ -9,7 +9,7 @@ import Foundation
 
 class SetGame
 {
-    private var theSetGame:Game
+    private let theSetGame:Game
     init() {
         self.theSetGame = Game()
     }

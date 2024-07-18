@@ -14,6 +14,8 @@
 		05A0336B2C4858F700DA7B16 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0336A2C4858F700DA7B16 /* Card.swift */; };
 		05A0336D2C48593D00DA7B16 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0336C2C48593D00DA7B16 /* Game.swift */; };
 		05A033712C485D3A00DA7B16 /* setGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A033702C485D3A00DA7B16 /* setGame.swift */; };
+		05A033732C48C57B00DA7B16 /* shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A033722C48C57B00DA7B16 /* shapes.swift */; };
+		05A033752C48D18400DA7B16 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A033742C48D18400DA7B16 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		05A0336A2C4858F700DA7B16 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		05A0336C2C48593D00DA7B16 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		05A033702C485D3A00DA7B16 /* setGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setGame.swift; sourceTree = "<group>"; };
+		05A033722C48C57B00DA7B16 /* shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shapes.swift; sourceTree = "<group>"; };
+		05A033742C48D18400DA7B16 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				05A0335D2C4858BD00DA7B16 /* SetGameView.swift */,
+				05A033722C48C57B00DA7B16 /* shapes.swift */,
+				05A033742C48D18400DA7B16 /* CardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -170,9 +176,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05A033752C48D18400DA7B16 /* CardView.swift in Sources */,
 				05A0335E2C4858BD00DA7B16 /* SetGameView.swift in Sources */,
 				05A0336B2C4858F700DA7B16 /* Card.swift in Sources */,
 				05A0335C2C4858BD00DA7B16 /* SetApp.swift in Sources */,
+				05A033732C48C57B00DA7B16 /* shapes.swift in Sources */,
 				05A0336D2C48593D00DA7B16 /* Game.swift in Sources */,
 				05A033712C485D3A00DA7B16 /* setGame.swift in Sources */,
 			);
