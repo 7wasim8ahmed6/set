@@ -9,8 +9,9 @@ import Foundation
 
 class SetGame
 {
-    private let theSetGame:Game
+    private(set) var theSetGame:Game
     init() {
         self.theSetGame = Game()
+        let _ = theSetGame.drawCards()
     }
 }
