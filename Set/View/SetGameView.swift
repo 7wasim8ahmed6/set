@@ -8,16 +8,56 @@
 import SwiftUI
 
 struct SetGameView: View {
-    let theGameView:SetGame
+    let theGameView: SetGame
+
     var body: some View {
-        VStack{
-            AspectVGrid(items: theGameView.theSetGame.mDrawCards, aspectRatio: 2/3, content: {card in
-                
-                CardView(content: AnyView(SquiggleView(number: 3, fillingType: .solid, color: .red))).aspectRatio(2/3, contentMode: .fit)
-            })
-        }.padding()
-        
-        
+        VStack {
+            if theGameView.theSetGame.mDrawCards.count <= 25 {
+                AspectVGrid(items: theGameView.theSetGame.mDrawCards, aspectRatio: 2/3) { card in
+                    CardView(content: AnyView(SquiggleView(number: 3, fillingType: .solid, color: .red)))
+                        .aspectRatio(2/3, contentMode: .fit)
+                }
+            } else {
+                ScrollView {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))]) {
+                        ForEach(0..<81) { i in
+                            CardView(content: AnyView(SquiggleView(number: 3, fillingType: .solid, color: .red)))
+                                .aspectRatio(2/3, contentMode: .fit)
+                        }
+                    }
+                }
+            }
+            
+            HStack {
+                Button(action: {
+                    // Add your action here
+                }) {
+                    Text("Draw Cards")
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(minWidth: 100)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .shadow(radius: 5)
+                }
+                Spacer()
+                Button(action: {
+                    // Add your action here
+                }) {
+                    Text("Start Fresh")
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(minWidth: 100)
+                        .background(Color.green)
+                        .cornerRadius(10)
+                        .shadow(radius: 5)
+                }
+            }
+            .padding(.horizontal)
+        }
+        .padding()
     }
 }
 

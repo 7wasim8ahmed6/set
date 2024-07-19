@@ -23,6 +23,7 @@ struct AspectVGrid<Item, ItemView>: View where ItemView:View, Item:Identifiable 
             GeometryReader{geometry in
                 let width:CGFloat = widthThatFits(itemCount: items.count, in: geometry.size, itemAspectRatio: aspectRatio)
                 
+                
                 LazyVGrid(columns: [adaptiveGridItem(width: width)], spacing: 0) {
                     ForEach(items){item in
                         content(item).aspectRatio(2/3, contentMode: .fit)
