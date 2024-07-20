@@ -11,7 +11,8 @@ struct Game{
     private(set) var mDrawCards:[Card] = []
     private var mIsFirstDraw = true
     private(set) var mChosenCards:[Card] = []
-    private (set)var mMatched:[Card] = []
+    private(set)var mMatched:[Card] = []
+    private(set) var mGameFinished = false
     
     init() {
         var lId = 1
@@ -163,6 +164,10 @@ struct Game{
         if mChosenCards.count == 3{
             if(makeMatch()){
                 print("\(mChosenCards[0])\n\(mChosenCards[1])\n\(mChosenCards[2]) make a match ")
+                if(mDrawCards.count == 3)
+                {
+                    mGameFinished = true
+                }
             }
             else
             {

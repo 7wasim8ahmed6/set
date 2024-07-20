@@ -12,57 +12,84 @@ struct SetGameView: View {
     
     var body: some View {
         VStack {
-            if theGameView.theSetGame.mDrawCards.count <= 16 {
-                AspectVGrid(items: theGameView.theSetGame.mDrawCards, aspectRatio: 2/3) { card in
-                    theGameView.interpretCard(aCard: card)
-                        .aspectRatio(2/3, contentMode: .fit)
-                        .padding(1)
-                        .onTapGesture {
-                            theGameView.choose(aCard: card)
-                        }
+            if theGameView.theSetGame.mGameFinished
+            {
+                Text("Congratulations! You've finished the game😎!")
+                                    .font(.largeTitle)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.green)
+                                    .padding()
+                HStack{
+                    Button(action: {
+                        theGameView.newGame()
+                    }) {
+                        Text("Start Fresh")
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(minWidth: 100)
+                            .background(Color.green)
+                            .cornerRadius(10)
+                            .shadow(radius: 5)
+                    }
                 }
-            } else {
-                ScrollView {
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))]) {
-                        ForEach(theGameView.theSetGame.mDrawCards){card in
-                            theGameView.interpretCard(aCard: card)
-                                .aspectRatio(2/3, contentMode: .fit)
-                                .onTapGesture {
-                                    theGameView.choose(aCard: card)
-                                }
+                .padding(.horizontal)
+
+            }
+            else{
+                
+                if theGameView.theSetGame.mDrawCards.count <= 16 {
+                    AspectVGrid(items: theGameView.theSetGame.mDrawCards, aspectRatio: 2/3) { card in
+                        theGameView.interpretCard(aCard: card)
+                            .aspectRatio(2/3, contentMode: .fit)
+                            .padding(1)
+                            .onTapGesture {
+                                theGameView.choose(aCard: card)
+                            }
+                    }
+                } else {
+                    ScrollView {
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))]) {
+                            ForEach(theGameView.theSetGame.mDrawCards){card in
+                                theGameView.interpretCard(aCard: card)
+                                    .aspectRatio(2/3, contentMode: .fit)
+                                    .onTapGesture {
+                                        theGameView.choose(aCard: card)
+                                    }
+                            }
                         }
                     }
                 }
-            }
-            
-            HStack {
-                Button(action: {
-                    theGameView.drawCards()
-                }) {
-                    Text("Draw Cards")
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(minWidth: 100)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .shadow(radius: 5)
+                
+                HStack {
+                    Button(action: {
+                        theGameView.drawCards()
+                    }) {
+                        Text("Draw Cards")
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(minWidth: 100)
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                            .shadow(radius: 5)
+                    }
+                    Spacer()
+                    Button(action: {
+                        theGameView.newGame()
+                    }) {
+                        Text("Start Fresh")
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(minWidth: 100)
+                            .background(Color.green)
+                            .cornerRadius(10)
+                            .shadow(radius: 5)
+                    }
                 }
-                Spacer()
-                Button(action: {
-                    theGameView.newGame()
-                }) {
-                    Text("Start Fresh")
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(minWidth: 100)
-                        .background(Color.green)
-                        .cornerRadius(10)
-                        .shadow(radius: 5)
-                }
+                .padding(.horizontal)
             }
-            .padding(.horizontal)
         }
         .padding()
     }
