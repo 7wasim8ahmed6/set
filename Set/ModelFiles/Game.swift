@@ -10,7 +10,7 @@ struct Game{
     private var mCards:[Card] = []
     private(set) var mDrawCards:[Card] = []
     private var mIsFirstDraw = true
-    private(set) var mChoosenIndices:[Int] = []
+    private(set) var mChosenCards:[Card] = []
     private (set)var mMatched:[Card] = []
     
     init() {
@@ -45,7 +45,7 @@ struct Game{
             }
         } else {
             if mCards.count >= 3 {
-                if mChoosenIndices.count == 3
+                if mChosenCards.count == 3
                 {
                     replaceDrawCardsIfChoiceFull()
                 }
@@ -61,30 +61,39 @@ struct Game{
         return retVal
     }
     
+    private func findChosenCardIndexInDrawn(aCard:Card) -> Int?
+    {
+        return mDrawCards.firstIndex(where: {
+            $0.id == aCard.id
+        })
+    }
+    
     private mutating func replaceDrawCardsIfChoiceFull()
     {
-        if mChoosenIndices.count == 3
+        if mChosenCards.count == 3
         {
-            print("3 Choosen from Draw cards, \(mDrawCards[mChoosenIndices[0]]), \(mDrawCards[mChoosenIndices[1]]), \(mDrawCards[mChoosenIndices[2]])")
-            let lIdOfFirstChoice = mDrawCards[mChoosenIndices[0]].id
+            print("3 Choosen from Draw cards, \(mChosenCards[0]), \(mChosenCards[1]), \(mChosenCards[2])")
+            let lIdOfFirstChoice = mChosenCards[0].id
             //If there was a match, the same cards will be put into mMatched
             if let _ = mMatched.first(where: {$0.id == lIdOfFirstChoice}){
                 //Replace the same index draw cards with new ones from mCards
                 print("3 Choosen cards were matched, Trying to replace matched cards")
-                for index in mChoosenIndices.sorted(by: >){
-                    if !mCards.isEmpty
-                    {
-                        let newCard = mCards.removeFirst()
-                        mDrawCards[index] = newCard
-                    }
-                    else
-                    {
-                        mDrawCards.remove(at: index)
+                for card in mChosenCards{
+                    if let indexInDrawn = findChosenCardIndexInDrawn(aCard: card){
+                        if !mCards.isEmpty
+                        {
+                            let newCard = mCards.removeFirst()
+                            mDrawCards[indexInDrawn] = newCard
+                        }
+                        else
+                        {
+                            mDrawCards.remove(at: indexInDrawn)
+                        }
                     }
                 }
             }
             //clear the choice
-            mChoosenIndices.removeAll(keepingCapacity: true)
+            mChosenCards.removeAll(keepingCapacity: true)
             //Clear matched cards
             mMatched.removeAll(keepingCapacity: true)
             print("Cleared mChoosen indices and mMatched")
@@ -96,23 +105,24 @@ struct Game{
         return mMatched.contains(where: {$0.id == mDrawCards[selectedIndex].id})
     }
     
-    private mutating func addOrRemoveChoice(selectedIndex:Int)
+    private mutating func addOrRemoveChoice(aCard:Card)
     {
-        if let lSelIndInChoosen = mChoosenIndices.firstIndex(of: selectedIndex)
-        {
-            mChoosenIndices.remove(at: lSelIndInChoosen)
+        if let lIndex = mChosenCards.firstIndex(where: {
+            $0.id == aCard.id
+        }){
+            mChosenCards.remove(at: lIndex)
         }
         else
         {
-            mChoosenIndices.append(selectedIndex)
+            mChosenCards.append(aCard)
         }
     }
     
     private mutating func makeMatch() ->Bool//return true if match was made
     {
-        let first = mDrawCards[mChoosenIndices[0]]
-        let second = mDrawCards[mChoosenIndices[1]]
-        let third = mDrawCards[mChoosenIndices[2]]
+        let first = mChosenCards[0]
+        let second = mChosenCards[1]
+        let third = mChosenCards[2]
         
         if (first.color != second.color && second.color != third.color && first.color != third.color) || (first.color == second.color && second.color == third.color)
         {
@@ -147,16 +157,16 @@ struct Game{
         }
         replaceDrawCardsIfChoiceFull()//Will run on 4th choice.After this if there were 3 choosen, choosen will be empty.
         //Now it can be first or second selection or 3rd selection
-        addOrRemoveChoice(selectedIndex: indexOfSelectedCard)
+        addOrRemoveChoice(aCard: choice)
         
         //If 3 choices are made, try make a match if possible
-        if mChoosenIndices.count == 3{
+        if mChosenCards.count == 3{
             if(makeMatch()){
-                print("\(mDrawCards[mChoosenIndices[0]])\n\(mDrawCards[mChoosenIndices[1]])\n\(mDrawCards[mChoosenIndices[2]]) make a match ")
+                print("\(mChosenCards[0])\n\(mChosenCards[1])\n\(mChosenCards[2]) make a match ")
             }
             else
             {
-                print("\(mDrawCards[mChoosenIndices[0]])\n\(mDrawCards[mChoosenIndices[1]])\n\(mDrawCards[mChoosenIndices[2]]) fail to make a match ")
+                print("\(mChosenCards[0])\n\(mChosenCards[1])\n\(mChosenCards[2]) fail to make a match ")
                 
             }
         }

@@ -30,21 +30,11 @@ class SetGame: ObservableObject
         theSetGame.chooseCard(choice: aCard)
     }
     
-    func getChosenCards(aIndices:[Int]) -> [Card]
-    {
-        var cards = [Card]()
-        for index in aIndices {
-            cards.append(theSetGame.mDrawCards[index])
-        }
-        return cards
-    }
-    
     func interpretCard(aCard:Card) -> CardView{
         let filling = interpretShade(aCard.shade)
         let numbers = interpretMultiplier(aCard.multiplier)
         let color = interpretColor(aCard.color)
-        let chosenCards = getChosenCards(aIndices: theSetGame.mChoosenIndices)
-        let chosen = chosenCards.contains(where: { $0.id == aCard.id })
+        let chosen = theSetGame.mChosenCards.contains(where: { $0.id == aCard.id })
         let matchedCard = theSetGame.mMatched.contains(where: {$0.id == aCard.id})
         
         if aCard.shape == .diamond
