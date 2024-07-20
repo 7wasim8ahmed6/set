@@ -25,13 +25,13 @@ This project is a solo implementation of the Set card game. It includes all the 
 ## Screenshots
 
 ### Main Game Screen
-![Main Game Screen](screenshots/main_game_screen.png)
+![Simulator Screenshot - iPhone 15 Pro - 2024-07-20 at 17 42 50](https://github.com/user-attachments/assets/54e32320-032f-422f-b04b-2d76498f900b)
+
+### Set Selection
 
 ### Set Matched
 ![Set Matched](screenshots/set_matched.png)
 
-### Settings Screen
-![Settings Screen](screenshots/settings_screen.png)
 
 ## Installation
 
