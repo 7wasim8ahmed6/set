@@ -28,9 +28,10 @@ This project is a solo implementation of the Set card game. It includes all the 
 ![Simulator Screenshot - iPhone 15 Pro - 2024-07-20 at 17 42 50](https://github.com/user-attachments/assets/54e32320-032f-422f-b04b-2d76498f900b)
 
 ### Set Selection
+![Simulator Screenshot - iPhone 15 Pro - 2024-07-20 at 17 47 13](https://github.com/user-attachments/assets/add567bf-f3fd-413c-b2b3-5a53dc86da49)
 
 ### Set Matched
-![Set Matched](screenshots/set_matched.png)
+![Simulator Screenshot - iPhone 15 Pro - 2024-07-20 at 17 47 54](https://github.com/user-attachments/assets/5000e08f-19fa-4d0e-8d4b-3adc610707f2)
 
 
 ## Installation
