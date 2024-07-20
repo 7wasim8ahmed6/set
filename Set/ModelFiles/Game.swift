@@ -71,7 +71,7 @@ struct Game{
             if let _ = mMatched.first(where: {$0.id == lIdOfFirstChoice}){
                 //Replace the same index draw cards with new ones from mCards
                 print("3 Choosen cards were matched, Trying to replace matched cards")
-                for index in mChoosenIndices{
+                for index in mChoosenIndices.sorted(by: >){
                     if !mCards.isEmpty
                     {
                         let newCard = mCards.removeFirst()
