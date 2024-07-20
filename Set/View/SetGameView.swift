@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct SetGameView: View {
-    let theGameView: SetGame
-
+    @ObservedObject var theGameView: SetGame
+    
     var body: some View {
         VStack {
-            if theGameView.theSetGame.mDrawCards.count <= 25 {
+            if theGameView.theSetGame.mDrawCards.count <= 16 {
                 AspectVGrid(items: theGameView.theSetGame.mDrawCards, aspectRatio: 2/3) { card in
-                    CardView(content: AnyView(SquiggleView(number: 3, fillingType: .solid, color: .red)))
+                    theGameView.interpretCard(aCard: card)
                         .aspectRatio(2/3, contentMode: .fit)
                 }
             } else {
                 ScrollView {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))]) {
-                        ForEach(0..<81) { i in
-                            CardView(content: AnyView(SquiggleView(number: 3, fillingType: .solid, color: .red)))
+                        ForEach(theGameView.theSetGame.mDrawCards){card in
+                            theGameView.interpretCard(aCard: card)
                                 .aspectRatio(2/3, contentMode: .fit)
                         }
                     }
@@ -30,7 +30,7 @@ struct SetGameView: View {
             
             HStack {
                 Button(action: {
-                    // Add your action here
+                    theGameView.drawCards()
                 }) {
                     Text("Draw Cards")
                         .fontWeight(.bold)
@@ -43,7 +43,7 @@ struct SetGameView: View {
                 }
                 Spacer()
                 Button(action: {
-                    // Add your action here
+                    theGameView.newGame()
                 }) {
                     Text("Start Fresh")
                         .fontWeight(.bold)

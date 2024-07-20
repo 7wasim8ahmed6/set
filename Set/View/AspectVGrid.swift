@@ -24,7 +24,7 @@ struct AspectVGrid<Item, ItemView>: View where ItemView:View, Item:Identifiable 
                 let width:CGFloat = widthThatFits(itemCount: items.count, in: geometry.size, itemAspectRatio: aspectRatio)
                 
                 
-                LazyVGrid(columns: [adaptiveGridItem(width: width)], spacing: 0) {
+                LazyVGrid(columns: [AspectVGrid<Item, ItemView>.adaptiveGridItem(width: width)], spacing: 0) {
                     ForEach(items){item in
                         content(item).aspectRatio(2/3, contentMode: .fit)
                     }
@@ -34,7 +34,7 @@ struct AspectVGrid<Item, ItemView>: View where ItemView:View, Item:Identifiable 
         }
     }
     
-    private func adaptiveGridItem(width:CGFloat) -> GridItem{
+    static func adaptiveGridItem(width:CGFloat) -> GridItem{
         var gridItem = GridItem(.adaptive(minimum: width))
         gridItem.spacing = 0
         return gridItem
