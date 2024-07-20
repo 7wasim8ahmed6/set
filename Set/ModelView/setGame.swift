@@ -25,6 +25,11 @@ class SetGame: ObservableObject
         drawCards()
     }
     
+    func choose(aCard:Card)
+    {
+        theSetGame.chooseCard(choice: aCard)
+    }
+    
     func interpretCard(aCard:Card) -> CardView{
         let filling = interpretShade(aCard.shade)
         let numbers = interpretMultiplier(aCard.multiplier)

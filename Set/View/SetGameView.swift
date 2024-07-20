@@ -16,6 +16,10 @@ struct SetGameView: View {
                 AspectVGrid(items: theGameView.theSetGame.mDrawCards, aspectRatio: 2/3) { card in
                     theGameView.interpretCard(aCard: card)
                         .aspectRatio(2/3, contentMode: .fit)
+                        .padding(1)
+                        .onTapGesture {
+                            theGameView.choose(aCard: card)
+                        }
                 }
             } else {
                 ScrollView {
@@ -23,6 +27,9 @@ struct SetGameView: View {
                         ForEach(theGameView.theSetGame.mDrawCards){card in
                             theGameView.interpretCard(aCard: card)
                                 .aspectRatio(2/3, contentMode: .fit)
+                                .onTapGesture {
+                                    theGameView.choose(aCard: card)
+                                }
                         }
                     }
                 }

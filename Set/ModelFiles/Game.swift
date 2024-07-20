@@ -11,7 +11,7 @@ struct Game{
     private(set) var mDrawCards:[Card] = []
     private var mIsFirstDraw = true
     private(set) var mChoosenIndices:[Int] = []
-    private var mMatched:[Card] = []
+    private (set)var mMatched:[Card] = []
     
     init() {
         var lId = 1

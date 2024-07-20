@@ -82,14 +82,26 @@ struct SquiggleView: View {
 
 struct CardView: View {
     let content: AnyView
-    
+    let chosen: Bool
+    let matched: Bool
+
+    init(content: AnyView, chosen: Bool = false, matched: Bool = false) {
+        self.content = content
+        self.chosen = chosen
+        self.matched = matched
+    }
+
     var body: some View {
         VStack {
             content
         }
         .padding()
-        .background(Color.white)
+        .background(chosen ? Color.yellow : Color.white)
         .cornerRadius(10)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(matched ? Color.blue : Color.clear, lineWidth: 5)
+        )
         .shadow(radius: 5)
         .padding(1)
     }
