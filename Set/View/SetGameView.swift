@@ -62,7 +62,7 @@ struct SetGameView: View {
                 }
                 
                 // Bottom Bar with Draw Cards and Start Fresh Button
-                BottomBarView(drawCards: {
+                BottomBarView(InfoString: theGameView.getScoringInfo(), drawCards: {
                     theGameView.drawCards()
                 })
             }
@@ -110,16 +110,23 @@ struct TopBarView: View {
 }
 
 struct BottomBarView: View {
+    @State private var showInfoSheet = false
+    let InfoString:String
     var drawCards: () -> Void
     
     var body: some View {
         HStack {
             // Info Button
-                       Button(action: {}) {
+                       Button(action: {
+                           showInfoSheet.toggle()
+                       }) {
                            Image(systemName: "info.circle")
                                .font(.title)
                                .foregroundColor(.gray)
                        }
+                       .sheet(isPresented: $showInfoSheet) {
+                                       InfoView(scoringInfo: InfoString, showInfoSheet: $showInfoSheet)
+                                   }
                        
                        Spacer()
             

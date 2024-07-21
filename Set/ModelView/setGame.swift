@@ -93,4 +93,8 @@ class SetGame: ObservableObject {
     private func updateTimeRemaining() {
         timeRemaining = Int(theSetGame.mScore.getRemainingTime())
     }
+    
+    func getScoringInfo() -> String {
+        return theSetGame.mScore.getScoringInfo()
+        }
 }

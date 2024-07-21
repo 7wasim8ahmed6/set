@@ -48,4 +48,15 @@ struct Score {
             let remainingTime = predefinedTimeLimit - elapsedTime
             return max(remainingTime, 0)
         }
+    
+    func getScoringInfo() -> String {
+            return """
+            -> Correct match: 3 points.
+            -> Additional consecutive matches: +1 point for each consecutive correct match.
+            -> Incorrect match: -1 point.
+            -> Time bonus: Extra points based on time saved (1 point for every 30 seconds saved).
+            -> Hint used: -1 point if a set is available
+            -> Draw cards although a set is available: -1 point.
+            """
+        }
 }
