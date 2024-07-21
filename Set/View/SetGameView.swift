@@ -10,14 +10,10 @@ import SwiftUI
 struct SetGameView: View {
     @ObservedObject var theGameView: SetGame
     
-    // Timer related states (Example)
-    @State private var timeRemaining = 60  // Example timer in seconds
-    @State private var timer: Timer? = nil
-    
     var body: some View {
         VStack {
             // Top Bar with Timer, Info and Hint Button
-            TopBarView(timeRemaining: timeRemaining, newGame: theGameView.newGame, showScoringInfo: showScoringInfo)
+            TopBarView(timeRemaining: theGameView.timeRemaining, newGame: theGameView.newGame, Pts: theGameView.theSetGame.mScore.points)
             
             if theGameView.theSetGame.mGameFinished {
                 Text("Congratulations! You've finished the game😎!")
@@ -72,52 +68,18 @@ struct SetGameView: View {
             }
         }
         .padding(.horizontal)
-        .onAppear {
-            startTimer()
-        }
-        .onDisappear {
-            stopTimer()
-        }
-    }
-    
-    // Timer functions
-    func startTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-            if timeRemaining > 0 {
-                timeRemaining -= 1
-            } else {
-                timer?.invalidate()
-                timer = nil
-            }
-        }
-    }
-    
-    func stopTimer() {
-        timer?.invalidate()
-        timer = nil
-    }
-    
-    func timeFormatted(_ totalSeconds: Int) -> String {
-        let minutes = totalSeconds / 60
-        let seconds = totalSeconds % 60
-        return String(format: "%02d:%02d", minutes, seconds)
-    }
-    
-    func showScoringInfo() {
-        // Implement the action to show scoring information
-        // This could be a modal or an alert
     }
 }
 
 struct TopBarView: View {
     var timeRemaining: Int
     var newGame:()->Void
-    var showScoringInfo: () -> Void
+    let Pts:Int
     
     var body: some View {
         HStack {
             VStack{
-                Text("Points: 200")
+                Text("Points: \(Pts)")
                     .font(.title)
                     .fontWeight(.bold)
                 

@@ -17,7 +17,7 @@ struct Score {
         startTime = Date()
     }
 
-    mutating func stopTimerAndCalculateBonus() {
+    private mutating func stopTimerAndCalculateBonus() {
         guard let startTime = startTime else { return }
         let timeTaken = Date().timeIntervalSince(startTime)
         let timeSaved = predefinedTimeLimit - timeTaken
@@ -41,4 +41,11 @@ struct Score {
         points -= 1
         consecutiveCorrect = 0
     }
+    
+    func getRemainingTime() -> TimeInterval {
+            guard let startTime = startTime else { return predefinedTimeLimit }
+            let elapsedTime = Date().timeIntervalSince(startTime)
+            let remainingTime = predefinedTimeLimit - elapsedTime
+            return max(remainingTime, 0)
+        }
 }

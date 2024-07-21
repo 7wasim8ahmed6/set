@@ -13,6 +13,7 @@ struct Game{
     private(set) var mChosenCards:[Card] = []
     private(set)var mMatched:[Card] = []
     private(set) var mGameFinished = false
+    private(set) var mScore = Score()
     
     init() {
         var lId = 1
@@ -26,7 +27,8 @@ struct Game{
                 }
             }
         }
-                mCards.shuffle()
+        mCards.shuffle()
+        mScore.startTimer()
     }
     
     func isDeckEmpty() -> Bool
@@ -163,6 +165,7 @@ struct Game{
         //If 3 choices are made, try make a match if possible
         if mChosenCards.count == 3{
             if(makeMatch()){
+                mScore.addCorrectPoints()
                 print("\(mChosenCards[0])\n\(mChosenCards[1])\n\(mChosenCards[2]) make a match ")
                 if(mDrawCards.count == 3)
                 {
@@ -171,6 +174,7 @@ struct Game{
             }
             else
             {
+                mScore.deductPoints()
                 print("\(mChosenCards[0])\n\(mChosenCards[1])\n\(mChosenCards[2]) fail to make a match ")
                 
             }
