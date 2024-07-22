@@ -74,6 +74,10 @@ struct Game{
         }
     }
     
+    func getWelcomeMessage() -> String {
+        return "Welcome to the Set Game! Get ready to test your pattern recognition skills."
+    }
+    
     func hasSetAvailable() -> (Bool, [Card]) {
         let size = mDrawCards.count
 

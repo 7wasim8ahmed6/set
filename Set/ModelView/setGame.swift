@@ -90,6 +90,11 @@ class SetGame: ObservableObject {
             return Color.purple
         }
     }
+    
+    func getWelcomeMessage() -> String
+    {
+        return theSetGame.getWelcomeMessage()
+    }
 
     private func startTimer() {
         timer?.cancel()

@@ -19,6 +19,7 @@
 		05A033772C4A1ACB00DA7B16 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A033762C4A1ACB00DA7B16 /* AspectVGrid.swift */; };
 		05A033792C4D32AB00DA7B16 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A033782C4D32AB00DA7B16 /* Score.swift */; };
 		05F895122C4D6ED100E4607B /* ScoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F895112C4D6ED100E4607B /* ScoreInfo.swift */; };
+		05F895142C4EE4F500E4607B /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F895132C4EE4F500E4607B /* WelcomeScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		05A033762C4A1ACB00DA7B16 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 		05A033782C4D32AB00DA7B16 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		05F895112C4D6ED100E4607B /* ScoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreInfo.swift; sourceTree = "<group>"; };
+		05F895132C4EE4F500E4607B /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				05A033742C48D18400DA7B16 /* CardView.swift */,
 				05A033762C4A1ACB00DA7B16 /* AspectVGrid.swift */,
 				05F895112C4D6ED100E4607B /* ScoreInfo.swift */,
+				05F895132C4EE4F500E4607B /* WelcomeScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				05A0336B2C4858F700DA7B16 /* Card.swift in Sources */,
 				05A0335C2C4858BD00DA7B16 /* SetApp.swift in Sources */,
 				05A033732C48C57B00DA7B16 /* Shapes.swift in Sources */,
+				05F895142C4EE4F500E4607B /* WelcomeScreen.swift in Sources */,
 				05A0336D2C48593D00DA7B16 /* Game.swift in Sources */,
 				05A033792C4D32AB00DA7B16 /* Score.swift in Sources */,
 				05A033712C485D3A00DA7B16 /* setGame.swift in Sources */,
