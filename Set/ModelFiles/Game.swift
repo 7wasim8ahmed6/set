@@ -123,9 +123,22 @@ struct Game{
     
     private mutating func makeMatch() ->Bool//return true if match was made
     {
-        let first = mChosenCards[0]
-        let second = mChosenCards[1]
-        let third = mChosenCards[2]
+        if makeMatch(first: mChosenCards[0], second: mChosenCards[1], third: mChosenCards[2]){
+            mMatched.append(mChosenCards[0])
+            mMatched.append(mChosenCards[1])
+            mMatched.append(mChosenCards[2])
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
+    
+    func makeMatch(first:Card, second:Card, third:Card) -> Bool{
+        if first.id == second.id || second.id == third.id || third.id == first.id{
+            return false
+        }
         
         if (first.color != second.color && second.color != third.color && first.color != third.color) || (first.color == second.color && second.color == third.color)
         {
@@ -135,16 +148,11 @@ struct Game{
                 {
                     if (first.multiplier != second.multiplier && second.multiplier != third.multiplier && first.multiplier != third.multiplier) || (first.multiplier == second.multiplier && second.multiplier == third.multiplier)
                     {
-                        mMatched.append(first)
-                        mMatched.append(second)
-                        mMatched.append(third)
                         return true
                     }
                 }
             }
-            
         }
-        
         return false
     }
     
