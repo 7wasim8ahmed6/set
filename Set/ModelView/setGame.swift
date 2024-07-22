@@ -16,12 +16,12 @@ class SetGame: ObservableObject {
 
     init() {
         self.theSetGame = Game()
-        let _ = theSetGame.drawCards()
+        theSetGame.drawCards()
         startTimer()
     }
 
     func drawCards() {
-        let _ = theSetGame.drawCards()
+        theSetGame.drawCards()
     }
 
     func newGame() {

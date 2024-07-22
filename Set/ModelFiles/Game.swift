@@ -36,9 +36,7 @@ struct Game{
         return mCards.isEmpty
     }
     
-    mutating func drawCards() -> [Card] {
-        var retVal = Array<Card>()
-        
+    mutating func drawCards(){
         if mIsFirstDraw {
             if mCards.count >= 12 {
                 let firstDrawCards = mCards.prefix(12)
@@ -48,6 +46,11 @@ struct Game{
             }
         } else {
             if mCards.count >= 3 {
+                let (isSetAvailable, _) = hasSetAvailable()
+                if isSetAvailable{
+                    mScore.deductPoints()
+                }
+                
                 if mChosenCards.count == 3
                 {
                     replaceDrawCardsIfChoiceFull()
@@ -60,8 +63,34 @@ struct Game{
                 }
             }
         }
-        retVal.append(contentsOf: mDrawCards)
-        return retVal
+    }
+    
+    func hasSetAvailable() -> (Bool, [Card]) {
+        let size = mDrawCards.count
+
+        guard size >= 3 else {
+            return (false, [])
+        }
+
+        for i in 0..<size {
+            for j in (i + 1)..<size {
+                for k in (j + 1)..<size {
+                    let card1 = mDrawCards[i]
+                    let card2 = mDrawCards[j]
+                    let card3 = mDrawCards[k]
+
+                    // Skip cards that are already in mMatched
+                    if mMatched.contains(where: { $0.id == card1.id || $0.id == card2.id || $0.id == card3.id }) {
+                        continue
+                    }
+
+                    if makeMatch(first: card1, second: card2, third: card3) {
+                        return (true, [card1, card2, card3])
+                    }
+                }
+            }
+        }
+        return (false, [])
     }
     
     private func findChosenCardIndexInDrawn(aCard:Card) -> Int?
