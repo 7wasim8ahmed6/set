@@ -12,11 +12,8 @@ struct SetGameView: View {
     
     var body: some View {
         VStack {
-            // Top Bar with Timer, Info and Hint Button
-            TopBarView(timeRemaining: theGameView.timeRemaining, newGame: theGameView.newGame, Pts: theGameView.theSetGame.mScore.points)
-            
             if theGameView.theSetGame.mGameFinished {
-                Text("Congratulations! You've finished the game😎!")
+                Text("😎 Congratulations! You've finished the game with a score of \( theGameView.theSetGame.mScore.points)!")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.green)
@@ -38,6 +35,9 @@ struct SetGameView: View {
                 }
                 .padding(.horizontal)
             } else {
+                // Top Bar with Timer, Info and Hint Button
+                TopBarView(timeRemaining: theGameView.timeRemaining, newGame: theGameView.newGame, Pts: theGameView.theSetGame.mScore.points)
+                
                 if theGameView.theSetGame.mDrawCards.count <= 16 {
                     AspectVGrid(items: theGameView.theSetGame.mDrawCards, aspectRatio: 2/3) { card in
                         theGameView.interpretCard(aCard: card)
