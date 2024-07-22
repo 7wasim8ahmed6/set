@@ -11,7 +11,15 @@ import SwiftUI
 class SetGame: ObservableObject {
     @Published private(set) var theSetGame: Game
     @Published var timeRemaining: Int = 60
+    @Published var hintCard: Card?
 
+    func provideHint() {
+        if let card = theSetGame.provideHint() {
+            hintCard = card
+        } else {
+            hintCard = nil
+        }
+    }
     private var timer: AnyCancellable?
 
     init() {

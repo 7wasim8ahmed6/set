@@ -43,6 +43,7 @@ struct SetGameView: View {
                         theGameView.interpretCard(aCard: card)
                             .aspectRatio(2/3, contentMode: .fit)
                             .padding(1)
+                            .background(theGameView.hintCard == card ? Color.yellow : Color.clear) // Highlight hint card
                             .onTapGesture {
                                 theGameView.choose(aCard: card)
                             }
@@ -53,6 +54,7 @@ struct SetGameView: View {
                             ForEach(theGameView.theSetGame.mDrawCards) { card in
                                 theGameView.interpretCard(aCard: card)
                                     .aspectRatio(2/3, contentMode: .fit)
+                                    .background(theGameView.hintCard == card ? Color.yellow : Color.clear) // Highlight hint card
                                     .onTapGesture {
                                         theGameView.choose(aCard: card)
                                     }
@@ -64,7 +66,7 @@ struct SetGameView: View {
                 // Bottom Bar with Draw Cards and Start Fresh Button
                 BottomBarView(InfoString: theGameView.getScoringInfo(), drawCards: {
                     theGameView.drawCards()
-                })
+                }, provideHint: theGameView.provideHint)
             }
         }
         .padding(.horizontal)
@@ -113,6 +115,7 @@ struct BottomBarView: View {
     @State private var showInfoSheet = false
     let InfoString:String
     var drawCards: () -> Void
+    var provideHint: () -> Void
     
     var body: some View {
         HStack {
@@ -131,7 +134,7 @@ struct BottomBarView: View {
                        Spacer()
             
             // Hint Button
-            Button(action: {}) {
+            Button(action: provideHint) {
                 HStack {
                     Image(systemName: "lightbulb")
                     Text("Hint")

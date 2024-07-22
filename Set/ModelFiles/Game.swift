@@ -27,9 +27,18 @@ struct Game{
                 }
             }
         }
-        mCards.shuffle()
+//        mCards.shuffle()
         mScore.startTimer()
     }
+    
+    mutating func provideHint() -> Card? {
+            let (setAvailable, hintCards) = hasSetAvailable()
+            if setAvailable, !hintCards.isEmpty {
+                mScore.deductPoints() // Deduct points for using a hint
+                return hintCards.first // Return the first card in the found set
+            }
+            return nil
+        }
     
     func isDeckEmpty() -> Bool
     {

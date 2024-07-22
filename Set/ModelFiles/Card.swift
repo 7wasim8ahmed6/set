@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct Card :Identifiable{
+struct Card :Identifiable, Equatable{
     let id: Int
     let shape:Shape
     let shade:Shade
