@@ -10,6 +10,7 @@ import SwiftUI
 struct SetGameView: View {
     @ObservedObject var theGameView: SetGame
     
+    static let cardPadding:CGFloat = 2
     var body: some View {
         VStack {
             if theGameView.theSetGame.mGameFinished {
@@ -42,7 +43,7 @@ struct SetGameView: View {
                     AspectVGrid(items: theGameView.theSetGame.mDrawCards, aspectRatio: 2/3) { card in
                         theGameView.interpretCard(aCard: card)
                             .aspectRatio(2/3, contentMode: .fit)
-                            .padding(1)
+                            .padding(SetGameView.cardPadding)
                             .background(theGameView.hintCard == card ? Color.yellow : Color.clear) // Highlight hint card
                             .onTapGesture {
                                 theGameView.choose(aCard: card)
@@ -50,10 +51,11 @@ struct SetGameView: View {
                     }
                 } else {
                     ScrollView {
-                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))]) {
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 73), spacing: 0)], spacing: 0) {
                             ForEach(theGameView.theSetGame.mDrawCards) { card in
                                 theGameView.interpretCard(aCard: card)
                                     .aspectRatio(2/3, contentMode: .fit)
+                                    .padding(SetGameView.cardPadding)
                                     .background(theGameView.hintCard == card ? Color.yellow : Color.clear) // Highlight hint card
                                     .onTapGesture {
                                         theGameView.choose(aCard: card)
