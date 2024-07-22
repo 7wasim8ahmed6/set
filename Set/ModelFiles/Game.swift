@@ -27,7 +27,7 @@ struct Game{
                 }
             }
         }
-//        mCards.shuffle()
+        mCards.shuffle()
         mScore.startTimer()
     }
     
