@@ -19,7 +19,7 @@ struct OvalView: View {
     var body: some View {
         ZStack {
             Oval(number: number)
-                .stroke(color, lineWidth: 2)
+                .stroke(color, lineWidth: 1.5)
             if fillingType == .solid
             {
                 Oval(number: number).fill(color)
@@ -42,7 +42,7 @@ struct DiamondView: View {
     var body: some View {
         ZStack {
             Diamond(number: number)
-                .stroke(color, lineWidth: 2)
+                .stroke(color, lineWidth: 1.5)
             if fillingType == .solid
             {
                 Diamond(number: number).fill(color)
@@ -65,7 +65,7 @@ struct SquiggleView: View {
     var body: some View {
         ZStack {
             Squiggle(number: number)
-                .stroke(color, lineWidth: 2)
+                .stroke(color, lineWidth: 1.5)
             if fillingType == .solid
             {
                 Squiggle(number: number).fill(color)
@@ -96,13 +96,23 @@ struct CardView: View {
             content
         }
         .padding()
-        .background(chosen ? Color.yellow : Color.white)
-        .cornerRadius(10)
+        .background(chosen ? Constants.selectedColor : Constants.backgroundColor)
+        .cornerRadius(Constants.cornerRadius)
         .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(matched ? Color.blue : Color.clear, lineWidth: 5)
+            RoundedRectangle(cornerRadius: Constants.cornerRadius)
+                .stroke(matched ? Constants.matchedColor : Color.clear, lineWidth: Constants.overlayLineWidth)
         )
-        .shadow(radius: 5)
-        .padding(1)
+        .shadow(radius: Constants.shadowRadius)
+        .padding(Constants.padding)
     }
+    
+    private struct Constants {
+            static let padding: CGFloat = 1
+            static let cornerRadius: CGFloat = 10
+            static let overlayLineWidth: CGFloat = 5
+            static let shadowRadius: CGFloat = 5
+            static let selectedColor: Color = .yellow
+            static let backgroundColor: Color = .white
+            static let matchedColor: Color = .blue
+        }
 }

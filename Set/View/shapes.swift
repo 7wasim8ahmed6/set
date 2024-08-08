@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct StripedPattern: View {
+    let StripeWidth:CGFloat = 1
     var body: some View {
         GeometryReader { geometry in
             Path { path in
-                let stripeWidth: CGFloat = 1
-                for x in stride(from: 0, to: geometry.size.width, by: stripeWidth * 4) {
-                    path.addRect(CGRect(x: x, y: 0, width: stripeWidth, height: geometry.size.height))
+                for x in stride(from: 0, to: geometry.size.width, by: StripeWidth * 4) {
+                    path.addRect(CGRect(x: x, y: 0, width: StripeWidth, height: geometry.size.height))
                 }
             }
         }
