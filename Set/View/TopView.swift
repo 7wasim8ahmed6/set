@@ -12,28 +12,48 @@ struct TopBarView: View {
     var newGame:()->Void
     let Pts:Int
     
+    private struct Constants {
+        // Fonts and Weights
+        static let pointsFont: Font = .title
+        static let timeFont: Font = .title2
+        static let fontWeight: Font.Weight = .bold
+        
+        // Colors
+        static let textColor: Color = .brown
+        static let buttonTextColor: Color = .white
+        static let buttonBackgroundColor: Color = .red
+        
+        // Layout
+        static let buttonCornerRadius: CGFloat = 10
+        static let buttonShadowRadius: CGFloat = 5
+        
+        // Strings
+        static let newGameText: String = "New Game"
+        static let timeFormat: String = "%02d:%02d"
+    }
+    
     var body: some View {
         HStack {
             VStack{
                 Text("Points: \(Pts)")
-                    .font(.title)
-                    .fontWeight(.bold)
+                    .font(Constants.pointsFont)
+                    .fontWeight(Constants.fontWeight)
                 
                 Text("Time: \(timeFormatted(timeRemaining))")
-                                .font(.title2)
-                                .fontWeight(.bold)
-            }.foregroundColor(.brown)
+                    .font(Constants.timeFont)
+                                .fontWeight(Constants.fontWeight)
+            }.foregroundColor(Constants.textColor)
             
             Spacer()
             
             Button(action: newGame) {
-                            Text("New Game")
-                                .fontWeight(.bold)
+                Text(Constants.newGameText)
+                                .fontWeight(Constants.fontWeight)
                                 .foregroundColor(.white)
                                 .padding()
-                                .background(Color.red)
-                                .cornerRadius(10)
-                                .shadow(radius: 5)
+                                .background(Constants.buttonBackgroundColor)
+                                .cornerRadius(Constants.buttonCornerRadius)
+                                .shadow(radius: Constants.buttonShadowRadius)
                         }
         }
     }
@@ -41,6 +61,6 @@ struct TopBarView: View {
     func timeFormatted(_ totalSeconds: Int) -> String {
         let minutes = totalSeconds / 60
         let seconds = totalSeconds % 60
-        return String(format: "%02d:%02d", minutes, seconds)
+        return String(format: Constants.timeFormat, minutes, seconds)
     }
 }
