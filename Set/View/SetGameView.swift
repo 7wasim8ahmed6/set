@@ -10,7 +10,25 @@ import SwiftUI
 struct SetGameView: View {
     @ObservedObject var theGameView: SetGame
     @State private var showWelcomeScreen = true
-    static let cardPadding:CGFloat = 2
+    
+    private struct GameViewConsts{
+        static let AspectRatio:CGFloat = 2/3
+        static let HintColor = Color.yellow
+        static let CardPadding:CGFloat = 2
+        static let GridCardMinSize:CGFloat = 73
+        static let MaxAspectGridCards = 16
+    }
+    
+    func GameCardView(_ card: Card) -> some View {
+        theGameView.interpretCard(aCard: card)
+            .aspectRatio(GameViewConsts.AspectRatio, contentMode: .fit)
+            .padding(GameViewConsts.CardPadding)
+            .background(theGameView.hintCard == card ? GameViewConsts.HintColor : Color.clear) // Highlight hint card
+            .onTapGesture {
+                theGameView.choose(aCard: card)
+            }
+    }
+    
     var body: some View {
         VStack {
             if showWelcomeScreen {
@@ -23,27 +41,15 @@ struct SetGameView: View {
                     // Top Bar with Timer, Info and Hint Button
                     TopBarView(timeRemaining: theGameView.timeRemaining, newGame: theGameView.newGame, Pts: theGameView.theSetGame.mScore.points)
                     
-                    if theGameView.theSetGame.mDrawCards.count <= 16 {
-                        AspectVGrid(items: theGameView.theSetGame.mDrawCards, aspectRatio: 2/3) { card in
-                            theGameView.interpretCard(aCard: card)
-                                .aspectRatio(2/3, contentMode: .fit)
-                                .padding(SetGameView.cardPadding)
-                                .background(theGameView.hintCard == card ? Color.yellow : Color.clear) // Highlight hint card
-                                .onTapGesture {
-                                    theGameView.choose(aCard: card)
-                                }
+                    if theGameView.theSetGame.mDrawCards.count <= GameViewConsts.MaxAspectGridCards {
+                        AspectVGrid(items: theGameView.theSetGame.mDrawCards, aspectRatio: GameViewConsts.AspectRatio) { card in
+                            GameCardView(card)
                         }
                     } else {
                         ScrollView {
-                            LazyVGrid(columns: [GridItem(.adaptive(minimum: 73), spacing: 0)], spacing: 0) {
+                            LazyVGrid(columns: [GridItem(.adaptive(minimum: GameViewConsts.GridCardMinSize), spacing: 0)], spacing: 0) {
                                 ForEach(theGameView.theSetGame.mDrawCards) { card in
-                                    theGameView.interpretCard(aCard: card)
-                                        .aspectRatio(2/3, contentMode: .fit)
-                                        .padding(SetGameView.cardPadding)
-                                        .background(theGameView.hintCard == card ? Color.yellow : Color.clear) // Highlight hint card
-                                        .onTapGesture {
-                                            theGameView.choose(aCard: card)
-                                        }
+                                    GameCardView(card)
                                 }
                             }
                         }
